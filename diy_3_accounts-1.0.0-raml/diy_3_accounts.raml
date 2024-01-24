@@ -1,0 +1,53 @@
+#%RAML 1.0
+title: DIY_3_Accounts
+
+/accounts:
+  get:
+    description: To reterive the accounts
+    headers:
+      user_id:
+    queryParameters:
+      account_type:
+        required: false
+      account_name:
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: !include datatypes/Account.raml
+            examples:
+              output: !include examples/Accounts.raml
+
+
+
+  post:
+    description: To create accounts
+    headers:
+      user_id:
+    body:
+      application/json:
+        type: array
+        items: !include datatypes/Account.raml
+        examples:
+          input: !include examples/Account_Post.raml
+
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              message: Accounts Created
+        
+        
+
+  
+
+
+
+
+            
+
+
+
